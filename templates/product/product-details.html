@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <h1 class="container my-4 text-danger">Here Is Your Product Details Page</h1>
+</div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container bg-light my-4">
+      <h1 class="display-5 text-primary">{{product.title}}</h1><hr>
+      {% if product.description %}
+      <p class="lead text-secondary">{{product.description | safe}}</p>
+      {% endif %}
+      {% if product.description2 %}
+      <p class="lead text-secondary">{{product.description2 | safe}}</p>
+    {% endif %}
+      <div class="card-body border my-2 text-center bg-light">
+        {% if product.price %}
+        <strong href="{{ product.price }}" class="card-link text-primary" target="__blank">Price: {{ product.price }}</strong>
+        {% endif %}
+        {% if product.inventory_quantity %}
+        <strong href="{{ product.inventory_quantity }}" class="card-link text-success" target="__blank">Inventory Quantity: {{ product.inventory_quantity }}</strong>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

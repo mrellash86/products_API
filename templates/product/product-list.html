@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-sm-4 mb-3">
+          <div class="card">
+            <!-- <img src="{{ prod.image.url }}" class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title }}</h5><hr>
+              <p class="card-text">{{ product.description | truncatewords:20 | safe }}</p>
+              <div class="card-body border my-2 text-center">
+                {% if product.price %}
+                <strong class="card-link text-primary" target="__blank">Price: {{ product.price }}</strong>
+                {% endif %}
+                {% if product.inventory_quantity %}
+                <strong class="card-link text-success" target="__blank">Inventory Quantity: {{ product.inventory_quantity }}</strong>
+                {% endif %}
+              </div>
+              <a href="{% url 'product' product.id %}" class="btn btn-primary my-2">Product Details</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
